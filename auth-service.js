@@ -19,7 +19,6 @@ const userSchema = new Schema({
 
 let User;
 
-// ========== Ensure that we use a connection local to our module) and initialize our "User" object ==========
 function initialize() {
   return new Promise((resolve, reject) => {
     let db = mongoose.createConnection(
@@ -36,7 +35,6 @@ function initialize() {
   });
 }
 
-// ========== Perform data validation ==========
 function registerUser(userData) {
   return new Promise((resolve, reject) => {
     if (userData.password !== userData.password2) {
@@ -68,7 +66,6 @@ function registerUser(userData) {
   });
 }
 
-// ========== Find the user in the database using userName ==========
 function checkUser(userData) {
   return new Promise((resolve, reject) => {
     User.find({ userName: userData.userName })
